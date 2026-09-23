@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b4436">
+  <meta name="description" content="Umusalam & Mustapha — wedding invitation, 24 October 2026. #A_HealthyDoseOfSalam">
+  <meta property="og:title" content="Umusalam & Mustapha — Wedding Invitation">
+  <meta property="og:description" content="A celebration of love and family — 24 October 2026. #A_HealthyDoseOfSalam">
+  <meta property="og:type" content="website">
+  <title>Umusalam &amp; Mustapha — Wedding Invitation</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/photo-04.jpg" fetchpriority="high">
+
+  <style>
+    :root {
+      --emerald: #10604a;
+      --emerald-deep: #0b4436;
+      --emerald-dark: #062a21;
+      --gold: #c6a35a;
+      --gold-light: #e0c589;
+      --cream: #f7f3ea;
+      --parchment: #efe8d6;
+      --ink: #241f1a;
+      --muted: #665e52;
+      --ease-luxury: cubic-bezier(.22,.72,.18,1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Jost, sans-serif;
+      font-weight: 300;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    body.is-locked { overflow: hidden; height: 100svh; }
+    button, input, select, textarea { font: inherit; }
+    img { max-width: 100%; display: block; }
+    :focus-visible { outline: 1px solid var(--gold-light); outline-offset: 4px; }
+
+    h1, h2, h3 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      letter-spacing: .02em;
+    }
+    p { margin: 0; }
+
+    .eyebrow {
+      color: var(--emerald-deep);
+      font-size: .72rem;
+      letter-spacing: .35em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+    .sprig { display: block; width: 100px; margin-inline: auto; }
+    .sprig path, .sprig circle { stroke: var(--gold); }
+
+    /* ---------- brand mark ---------- */
+    .brand-mark {
+      position: fixed;
+      top: max(18px, env(safe-area-inset-top));
+      left: max(18px, env(safe-area-inset-left));
+      z-index: 1200;
+      width: clamp(40px, 5vw, 52px);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      opacity: .95;
+      text-decoration: none;
+      transition: transform .4s ease, opacity .4s ease;
+    }
+    .brand-mark:hover { transform: translateY(-1px); opacity: 1; }
+    .brand-mark img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+
+    /* ---------- Opening cover ---------- */
+    .envelope-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: grid;
+      place-items: center;
+      padding: 4vh 5vw;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 30%, rgba(16,96,74,.35), transparent 45%),
+        radial-gradient(circle at 50% 100%, rgba(0,0,0,.32), transparent 58%),
+        linear-gradient(180deg, #062a21 0%, var(--emerald-deep) 55%, var(--emerald-dark) 100%);
+      opacity: 1;
+      visibility: visible;
+      transition: opacity .5s ease, visibility .5s ease;
+      isolation: isolate;
+    }
+    .envelope-overlay::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .16;
+      background-image: radial-gradient(rgba(255,255,255,.12) .6px, transparent .6px);
+      background-size: 5px 5px;
+      mix-blend-mode: soft-light;
+    }
+    .envelope-overlay.dismissed {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .invite-card {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: min(420px, 88vw);
+    }
+    .invite-stage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+      touch-action: manipulation;
+      filter: drop-shadow(0 30px 72px rgba(0,0,0,.55));
+      border: 1px solid rgba(198,163,90,.55);
+      transition: transform .9s var(--ease-luxury), opacity .6s ease;
+    }
+    .invite-stage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .invite-stage::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(6,42,33,.05) 0%, rgba(6,42,33,.15) 45%, rgba(6,42,33,.88) 100%);
+    }
+    .invite-stage-copy {
+      position: absolute;
+      inset: auto 0 0 0;
+      z-index: 2;
+      padding: 0 8% 9%;
+      text-align: center;
+      color: var(--cream);
+    }
+    .invite-stage-copy .mini-eyebrow {
+      font-size: .68rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: .5rem;
+    }
+    .invite-stage-copy h2 {
+      font-size: clamp(1.9rem, 7vw, 2.6rem);
+      color: var(--cream);
+    }
+    .invite-stage-copy p { margin-top: .35rem; font-size: .85rem; letter-spacing: .06em; color: rgba(247,243,234,.85); }
+    .tap-label {
+      margin-top: .6rem;
+      font-size: .6rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      animation: pulseLabel 2.4s ease-in-out infinite;
+    }
+    @keyframes pulseLabel { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+    .invite-stage.open { transform: scale(1.05); opacity: 0; }
+
+    .seal-wrap {
+      position: absolute;
+      left: 50%;
+      bottom: 12%;
+      z-index: 3;
+      width: 92px;
+      height: 92px;
+      transform: translate(-50%, 0);
+    }
+    .seal-glow {
+      position: absolute;
+      inset: -14px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(224,197,137,.55), transparent 68%);
+      animation: sealPulse 2.6s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes sealPulse { 0%,100% { opacity: .55; transform: scale(.96); } 50% { opacity: 1; transform: scale(1.05); } }
+    .seal-hit {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 32% 28%, rgba(255,255,255,.35), transparent 40%),
+        radial-gradient(circle, var(--gold-light) 0%, var(--gold) 55%, #8a6a2c 100%);
+      box-shadow: 0 8px 22px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.25);
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      letter-spacing: .02em;
+      color: var(--emerald-dark);
+      transition: transform .2s ease;
+    }
+    .seal-hit:active, .invite-stage.seal-pressed .seal-hit { transform: scale(.94); }
+    .invite-stage.open .seal-wrap { opacity: 0; transition: opacity .35s ease; }
+    .cover-subtitle {
+      margin-top: 1.1rem;
+      font-size: .72rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      text-align: center;
+    }
+
+    /* ---------- content sections ---------- */
+    main { opacity: 0; transition: opacity .6s ease .1s; }
+    body.hero-ready main { opacity: 1; }
+    section { padding: 5rem 8vw; max-width: 760px; margin-inline: auto; }
+    .section-head { text-align: center; margin-bottom: 2.2rem; }
+    .section-head h2 { font-size: clamp(1.7rem, 4vw, 2.2rem); margin-top: .5rem; }
+
+    .hero { text-align: center; padding-top: 6rem; }
+    .hero .eyebrow { margin-bottom: 1.2rem; }
+    .hero .names { font-size: clamp(2.6rem, 10vw, 4.2rem); color: var(--emerald-deep); }
+    .hero .amp { color: var(--gold); font-style: italic; }
+    .hero .date-line { margin-top: 1.3rem; font-size: 1rem; color: var(--muted); max-width: 30ch; margin-inline: auto; }
+    .hero .hashtag-line { margin-top: .9rem; font-size: .82rem; letter-spacing: .1em; color: var(--emerald); }
+    .hero .sprig { margin-top: 2rem; }
+
+    /* ---------- scroll reveal ---------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(46px) scale(.97);
+      transition: opacity 1.1s cubic-bezier(.16,.84,.44,1), transform 1.1s cubic-bezier(.16,.84,.44,1);
+      will-change: transform, opacity;
+    }
+    .reveal.in-view { opacity: 1; transform: translateY(0) scale(1); }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+    /* ---------- photo frames (bordered, vignette, ken-burns) ---------- */
+    .photo-frame {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(198,163,90,.55);
+      background: linear-gradient(135deg, rgba(16,96,74,.14), rgba(198,163,90,.16));
+    }
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1);
+      animation: kenburns 16s ease-in-out infinite alternate;
+    }
+    .photo-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 0 1px rgba(198,163,90,.5);
+      background: radial-gradient(ellipse at center, transparent 55%, rgba(6,42,33,.32) 100%);
+      pointer-events: none;
+    }
+    @keyframes kenburns {
+      from { transform: scale(1) translate(0,0); }
+      to { transform: scale(1.1) translate(-1.5%,-1.5%); }
+    }
+    @media (prefers-reduced-motion: reduce) { .photo-frame img { animation: none; } }
+
+    .hero-photo {
+      width: 128px;
+      height: 128px;
+      border-radius: 50%;
+      margin: 0 auto 1.6rem;
+      border-color: rgba(198,163,90,.7);
+      animation: glow 4.5s 1s ease-in-out infinite;
+    }
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(198,163,90,0); }
+      50% { box-shadow: 0 0 28px 6px rgba(198,163,90,.35); }
+    }
+    @media (prefers-reduced-motion: reduce) { .hero-photo { animation: none; } }
+
+    .story-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 2.4rem;
+      align-items: center;
+      text-align: left;
+    }
+    .story-layout .photo-frame { aspect-ratio: 4/5; border-radius: 3px; }
+    .story-layout .story-copy p { text-align: left; margin: 0 0 1rem; color: var(--muted); }
+    .story-layout .story-copy p:last-child { margin-bottom: 0; }
+    .story-layout .story-copy .heading-arabic {
+      font-family: 'Amiri', serif;
+      font-size: clamp(1.8rem, 4.5vw, 2.4rem);
+      color: var(--emerald-deep);
+      line-height: 1.4;
+    }
+    .story-layout .story-copy .heading-translation {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-top: .3rem;
+    }
+    .story-layout .story-copy .heading-citation {
+      margin-top: .5rem;
+      margin-bottom: 1.6rem;
+    }
+    .story-layout .story-copy .arabic-verse {
+      font-family: 'Amiri', serif;
+      font-size: 1.4rem;
+      line-height: 2;
+      color: var(--emerald-deep);
+      text-align: right;
+      margin-bottom: 1.1rem;
+    }
+    .story-layout .story-copy .verse-citation {
+      font-size: .78rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: left;
+    }
+    @media (max-width: 700px) {
+      .story-layout { grid-template-columns: 1fr; text-align: center; }
+      .story-layout .story-copy p { text-align: center; }
+      .story-layout .story-copy .arabic-verse { text-align: center; }
+      .story-layout .story-copy .verse-citation { text-align: center; }
+      .story-layout .story-copy .heading-arabic,
+      .story-layout .story-copy .heading-translation { text-align: center; }
+    }
+
+    .blessing-page { padding-top: 3rem; padding-bottom: 3rem; }
+    .blessing-card {
+      background: var(--emerald-deep);
+      color: var(--cream);
+      border-radius: 6px;
+      padding: 3rem 2.4rem;
+      text-align: center;
+    }
+    .blessing-card .sprig { margin-bottom: 1.6rem; }
+    .blessing-card .sprig path, .blessing-card .sprig circle { stroke: var(--gold-light); }
+    .blessing-line {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.15rem, 3vw, 1.5rem);
+      font-style: italic;
+      line-height: 1.7;
+      color: var(--cream);
+      max-width: 40ch;
+      margin: 0 auto 1.4rem;
+    }
+    .blessing-line:last-child { margin-bottom: 0; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: .5rem;
+    }
+    .gallery-grid .photo-frame { aspect-ratio: 3/4; border-radius: 3px; }
+    .gallery-grid .photo-frame:nth-child(1) { transition-delay: 0s; }
+    .gallery-grid .photo-frame:nth-child(2) { transition-delay: .15s; }
+    .gallery-grid .photo-frame:nth-child(3) { transition-delay: .3s; }
+    .gallery-grid .photo-frame:nth-child(4) { transition-delay: .45s; }
+    .gallery-grid .photo-frame:nth-child(5) { transition-delay: .6s; }
+    @media (max-width: 640px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .schedule-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1.6rem; }
+    .schedule-item { display: grid; grid-template-columns: 90px 1px 1fr; gap: 1.2rem; align-items: start; }
+    .schedule-time { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; color: var(--emerald-deep); text-align: right; padding-top: .1rem; }
+    .schedule-rule { background: rgba(198,163,90,.5); }
+    .schedule-body h3 { font-size: 1.3rem; }
+    .schedule-body p { margin-top: .3rem; color: var(--muted); font-size: .92rem; }
+
+    .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: .5rem; }
+    .detail-card { background: var(--parchment); border: 1px solid rgba(198,163,90,.35); border-radius: 4px; padding: 1.4rem; }
+    .detail-card h3 { font-size: 1.25rem; margin-top: .3rem; }
+    .detail-card p { margin-top: .4rem; color: var(--muted); font-size: .9rem; }
+    .palette-row { display: flex; gap: .4rem; margin-top: .8rem; }
+    .swatch { width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(0,0,0,.08); }
+    .swatch.emerald { background: var(--emerald); }
+    .swatch.emerald-deep { background: var(--emerald-deep); }
+    .swatch.gold { background: var(--gold); }
+    .swatch.cream { background: var(--cream); border-color: rgba(0,0,0,.15); }
+
+
+
+    .rsvp { background: var(--emerald-deep); border-radius: 6px; color: var(--cream); }
+    .rsvp .eyebrow { color: var(--gold-light); }
+    .rsvp .section-head h2 { color: var(--cream); }
+    .rsvp form { display: flex; flex-direction: column; gap: 1rem; }
+    .field label { display: block; font-size: .78rem; letter-spacing: .06em; margin-bottom: .4rem; color: var(--gold-light); }
+    .field input, .field select, .field textarea {
+      width: 100%;
+      padding: .85rem .9rem;
+      border: 1px solid rgba(247,243,234,.3);
+      border-radius: 2px;
+      outline: none;
+      background: rgba(247,243,234,.08);
+      color: var(--cream);
+    }
+    .field select option { color: var(--ink); }
+    .field input::placeholder, .field textarea::placeholder { color: rgba(247,243,234,.58); }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 2px rgba(198,163,90,.15); }
+    .rsvp-submit {
+      width: 100%;
+      padding: .9rem 1rem;
+      border: 1px solid var(--gold);
+      border-radius: 2px;
+      background: var(--gold);
+      color: var(--emerald-dark);
+      cursor: pointer;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      transition: transform .25s ease, filter .25s ease;
+    }
+    .rsvp-submit:hover { filter: brightness(1.08); transform: translateY(-1px); }
+    .confirm-msg { display: none; margin-top: 1rem; color: var(--cream); font-size: .9rem; text-align: center; }
+
+    footer { padding: 4rem 6vw 5rem; text-align: center; }
+    footer .amp { color: var(--emerald); font: italic 1.3rem "Cormorant Garamond", serif; }
+    footer .credit { margin-top: .8rem; color: #8a8074; font-size: .76rem; letter-spacing: .04em; opacity: .75; }
+
+    @media (max-width: 560px) {
+      .invite-card { width: min(360px, 90vw); }
+      section { padding-inline: 7vw; }
+      .details-grid { grid-template-columns: 1fr; }
+      .schedule-item { grid-template-columns: 72px 1px 1fr; gap: .9rem; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .invite-stage, .envelope-overlay, main { transition: none; }
+    }
+  </style>
+</head>
+
+<body class="is-locked">
+  <a class="brand-mark" href="#heroSection" aria-label="Umusalam & Mustapha"><img src="assets/bit-logo.png" alt="BiT"></a>
+
+  <div class="envelope-overlay" id="envelopeOverlay" aria-label="Wedding invitation cover">
+    <div class="invite-card">
+      <div class="invite-stage" id="inviteStage" role="button" tabindex="0" aria-label="Open Umusalam and Mustapha's wedding invitation">
+        <img src="assets/photo-04.jpg" alt="" aria-hidden="true" fetchpriority="high">
+        <div class="invite-stage-copy">
+          <div class="mini-eyebrow">Together with their families</div>
+          <h2>Umusalam &amp; Mustapha</h2>
+          <p>#A_HealthyDoseOfSalam</p>
+        </div>
+        <div class="seal-wrap">
+          <div class="seal-glow" aria-hidden="true"></div>
+          <button class="seal-hit" id="sealHit" type="button" aria-label="Tap the seal to open the invitation">U&amp;M</button>
+        </div>
+      </div>
+      <div class="tap-label">Tap the seal to open</div>
+      <div class="cover-subtitle">Umusalam &amp; Mustapha</div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero" id="heroSection">
+      <div class="photo-frame hero-photo has-photo reveal in-view">
+        <img src="assets/photo-01.jpg" alt="Umusalam and Mustapha portrait">
+      </div>
+      <div class="eyebrow">Together with their families</div>
+      <h1 class="names">Umusalam <span class="amp">&amp;</span> Mustapha</h1>
+      <div class="date-line">request the honour of your presence — <strong>Saturday, 24th October 2026</strong></div>
+      <div class="hashtag-line">#A_HealthyDoseOfSalam</div>
+      <svg class="sprig" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M10 20 H190" stroke-width="1"/>
+        <path d="M100 20 C95 10,85 8,80 14 C88 16,94 18,100 20 Z" stroke-width="1"/>
+        <path d="M100 20 C105 10,115 8,120 14 C112 16,106 18,100 20 Z" stroke-width="1"/>
+        <circle cx="100" cy="20" r="3" stroke-width="1"/>
+      </svg>
+    </section>
+
+    <section class="story">
+      <div class="story-layout">
+        <div class="photo-frame has-photo reveal">
+          <img src="assets/photo-03.jpg" alt="Umusalam and Mustapha, back to back">
+        </div>
+        <div class="story-copy reveal">
+          <div class="section-head" style="text-align:left; margin-bottom:1.2rem;">
+            <div class="eyebrow">From the Qur'an</div>
+            <h2 dir="rtl" lang="ar" class="heading-arabic">وَخَلَقْنَاكُمْ أَزْوَاجًا</h2>
+            <p class="heading-translation">&ldquo;And We created you in pairs.&rdquo;</p>
+            <p class="verse-citation heading-citation">Qur&rsquo;an 78:8</p>
+          </div>
+          <p dir="rtl" lang="ar" class="arabic-verse">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ</p>
+          <p>&ldquo;And of His signs is that He has created spouses for you from your own kind, that you may find peace in them, and He has set between you love and mercy. Surely there are signs in this for those who reflect.&rdquo;</p>
+          <p class="verse-citation">Qur&rsquo;an 30:21</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery">
+      <div class="section-head">
+        <div class="eyebrow">In Pictures</div>
+        <h2>Umusalam &amp; Mustapha</h2>
+      </div>
+      <div class="gallery-grid">
+        <div class="photo-frame has-photo reveal"><img src="assets/photo-04.jpg" alt="Umusalam and Mustapha, formal portrait" loading="lazy"></div>
+        <div class="photo-frame has-photo reveal"><img src="assets/photo-01.jpg" alt="Umusalam and Mustapha, close embrace" loading="lazy"></div>
+        <div class="photo-frame has-photo reveal"><img src="assets/photo-05.jpg" alt="Umusalam and Mustapha, forehead to forehead" loading="lazy"></div>
+        <div class="photo-frame has-photo reveal"><img src="assets/photo-02.jpg" alt="Umusalam and Mustapha, facing away" loading="lazy"></div>
+        <div class="photo-frame has-photo reveal"><img src="assets/photo-03.jpg" alt="Umusalam and Mustapha, back to back" loading="lazy"></div>
+      </div>
+    </section>
+
+
+    <section class="schedule">
+      <div class="section-head"><div class="eyebrow">The Celebration</div><h2>Schedule of Events</h2></div>
+      <ul class="schedule-list">
+        <li class="schedule-item"><div class="schedule-time">9:00 AM</div><div class="schedule-rule"></div><div class="schedule-body"><h3>Joining</h3><p>Al-Jabbar Central Mosque, Iyagbugie Quarters, Ayua Uzairue. Please be seated by 8:45 AM.</p></div></li>
+        <li class="schedule-item"><div class="schedule-time">12:00 Noon</div><div class="schedule-rule"></div><div class="schedule-body"><h3>Reception</h3><p>Uyi Grand Event Center, Auchi. Dinner, dancing, and toasts.</p></div></li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="section-head"><div class="eyebrow">Good to Know</div><h2>Details for Guests</h2></div>
+      <div class="details-grid">
+        <div class="detail-card"><div class="eyebrow">Joining</div><h3>Al-Jabbar Central Mosque</h3><p>Iyagbugie Quarters, Ayua Uzairue. Joining at 9:00 AM.</p></div>
+        <div class="detail-card"><div class="eyebrow">Reception</div><h3>Uyi Grand Event Center</h3><p>Auchi. Reception at 12:00 Noon.</p></div>
+        <div class="detail-card" style="grid-column: 1 / -1;"><div class="eyebrow">Dress Code</div><h3>Emerald &amp; Champagne Gold</h3><p>Formal attire. We'd love to see the palette on the dance floor.</p><div class="palette-row"><span class="swatch emerald"></span><span class="swatch emerald-deep"></span><span class="swatch gold"></span><span class="swatch cream"></span></div></div>
+      </div>
+    </section>
+
+    <section class="blessing-page reveal">
+      <div class="blessing-card">
+        <svg class="sprig" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M10 20 H190" stroke-width="1"/>
+          <path d="M100 20 C95 10,85 8,80 14 C88 16,94 18,100 20 Z" stroke-width="1"/>
+          <path d="M100 20 C105 10,115 8,120 14 C112 16,106 18,100 20 Z" stroke-width="1"/>
+          <circle cx="100" cy="20" r="3" stroke-width="1"/>
+        </svg>
+        <p class="blessing-line">As we embark on this new journey&hellip;<br>please remember us in your heartfelt duas.</p>
+        <p class="blessing-line">We hope you are able to join us in celebrating<br>one of the most special days in our lives!</p>
+      </div>
+    </section>
+
+    <section class="rsvp">
+      <div class="section-head"><div class="eyebrow">Kindly Respond</div><h2>RSVP</h2></div>
+      <form id="rsvpForm">
+        <div class="field"><label for="name">Full name</label><input id="name" name="name" type="text" autocomplete="name" required placeholder="Your name"></div>
+        <div class="field"><label for="attending">Will you be attending?</label><select id="attending" name="attending"><option>Joyfully accepts</option><option>Regretfully declines</option></select></div>
+        <div class="field"><label for="note">Message for the couple (optional)</label><textarea id="note" name="note" rows="3" placeholder="Leave a wish for Umusalam &amp; Mustapha"></textarea></div>
+        <button type="submit" class="rsvp-submit">Send RSVP</button>
+        <div class="confirm-msg" id="confirmMsg" role="status" aria-live="polite">Thank you, your RSVP has been recorded.</div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <svg class="sprig" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M10 20 H190" stroke-width="1"/><path d="M100 20 C95 10,85 8,80 14 C88 16,94 18,100 20 Z" stroke-width="1"/><path d="M100 20 C105 10,115 8,120 14 C112 16,106 18,100 20 Z" stroke-width="1"/><circle cx="100" cy="20" r="3" stroke-width="1"/>
+    </svg>
+    <p>With love, <span class="amp">Umusalam &amp; Mustapha</span></p>
+    <p class="credit">Digital invitation crafted by BiT Affairs</p>
+  </footer>
+
+  <script>
+    (() => {
+      const stage = document.getElementById('inviteStage');
+      const sealHit = document.getElementById('sealHit');
+      const overlay = document.getElementById('envelopeOverlay');
+      const body = document.body;
+      const rsvpForm = document.getElementById('rsvpForm');
+      const confirmMsg = document.getElementById('confirmMsg');
+      const OPEN_DURATION = 650;
+      let opened = false;
+
+      const openInvite = () => {
+        if (opened) return;
+        opened = true;
+        stage.classList.remove('seal-pressed');
+        stage.classList.add('open');
+        sealHit.disabled = true;
+        sealHit.setAttribute('aria-label', 'Invitation opening');
+
+        window.setTimeout(() => {
+          overlay.classList.add('dismissed');
+          body.classList.remove('is-locked');
+          body.classList.add('hero-ready');
+        }, OPEN_DURATION);
+      };
+
+      sealHit.addEventListener('click', openInvite);
+      sealHit.addEventListener('pointerdown', () => {
+        if (!opened) stage.classList.add('seal-pressed');
+      });
+      ['pointerup', 'pointercancel', 'pointerleave'].forEach(type => {
+        sealHit.addEventListener(type, () => stage.classList.remove('seal-pressed'));
+      });
+
+      stage.addEventListener('click', event => {
+        if (event.target === sealHit) return;
+        openInvite();
+      });
+      stage.addEventListener('keydown', event => {
+        if ((event.key === 'Enter' || event.key === ' ') && !opened) {
+          event.preventDefault();
+          openInvite();
+        }
+      });
+
+      rsvpForm.addEventListener('submit', event => {
+        event.preventDefault();
+        confirmMsg.style.display = 'block';
+        rsvpForm.querySelector('.rsvp-submit').style.display = 'none';
+      });
+
+      // Scroll-triggered reveal for photo frames and story text
+      const revealEls = document.querySelectorAll('.reveal:not(.in-view)');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: .2, rootMargin: '0px 0px -40px 0px' });
+        revealEls.forEach(el => io.observe(el));
+      } else {
+        revealEls.forEach(el => el.classList.add('in-view'));
+      }
+    })();
+  </script>
+</body>
+</html>
